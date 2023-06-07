@@ -42,6 +42,10 @@ public class SimpleHT{
         public Integer getValue(){
             return value;
         }
+        @Override
+        public String toString(){
+            return "(" + key + " | " + value + ")";
+        }
     }
 
     /**
@@ -124,6 +128,7 @@ public class SimpleHT{
             Pair content = list.get(i);
             if(content.key.equals(key)){
                 list.remove(i);
+                size--;
                 return true;
             }
         }
@@ -133,8 +138,8 @@ public class SimpleHT{
     @Override
     public String toString(){
         StringBuilder out = new StringBuilder();
-        for(int i = 0; i < size; i++){
-            out.append(data.get(i).toString() + System.lineSeparator());
+        for (List<Pair> datum : data) {
+            out.append(datum.toString()).append(System.lineSeparator());
         }
         return out.toString();
     }
